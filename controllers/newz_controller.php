@@ -31,4 +31,12 @@ class Newz_Controller extends Controller {
 		$this->View->data = $result;
 		$this->View->render('layouts/json.phtml');
 	}
+	
+	public function status()
+	{
+		$data = $this->Newz->update();
+
+		$this->View->data = $data;
+		$this->View->render('layouts/json.phtml');
+	}
 }

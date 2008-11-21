@@ -1,5 +1,6 @@
 $(document).ready(function(){
 	initSearch();
+	initTabs();
 });
 
 function initSearch () {
@@ -43,7 +44,6 @@ function download() {
 }
 
 function handleDownload(data) {
-//	$("#results").html(data);
 	if(data.code) {
 		// error
 		alert("An Error has occurred " + data.reason);
@@ -51,3 +51,63 @@ function handleDownload(data) {
 		alert("Report queued");
 	}
 }
+
+function initTabs() {
+	$('#nav a').click(showPane);
+}
+function showPane() {
+	$('#contents .pane').hide();
+	var target = $(this).attr('href');
+	$(target).show();
+	if(target == '#monitor')
+		monitor.start();
+	else
+		monitor.stop();
+	return false;
+}
+
+var monitor = new Monitor();
+
+function Monitor(){
+}
+Monitor.prototype.start = function(){ 
+	this.fetch();
+	this.timer = setInterval(this.fetch, 5000);
+}
+Monitor.prototype.stop = function() {
+	clearInterval(this.timer);
+}
+Monitor.prototype.fetch = function() {
+	// pull new info
+	$.ajax({
+		url: '?a=status',
+		method: 'get',
+		success: update,
+		dataType: 'json',
+		cache: false
+	});
+}
+
+function update(data) {
+	if(data.code) {
+		// report error
+		var html = '<div>Code: '+data.code+'</div>';
+		html += '<div>'+data.reason+'</div>';
+	} else {
+		// build status report	
+		var html = '<fieldset><div class="title">Currently downloading: ' + data.currently_downloading[0].nzbName + '</div>';
+		html += '<div class="loader">';
+		html += '<div class="info">'+ data.percent_complete + '% complete</div>';
+		html += '<div class="bar" style="width: ' + data.percent_complete + '%"></div></div></fieldset>';
+		html += '<h4 class="title">Queued Reports</h4>';
+		
+		html += '<ul id="queue">';
+		for(var x in data.queued) {
+			var report = data.queued[x];
+			html += '<li>'+report['nzbName']+'<span>'+report['total_mb']+'MB</span></li>';
+		}
+		html += '</ul>';
+	}
+	$("#monitor").html($(html));
+}
+

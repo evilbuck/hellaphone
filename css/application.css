@@ -1,8 +1,8 @@
 body {
 	background: url(../images/pinstripes.png) #EFEFEF;
+	font-family: Arial;
 }
-#results {
-	margin: 2px;
+.pane ul, .pane fieldset {
 	border: 1px solid #999;
 	list-style: none;
 	list-style-position: inside;
@@ -11,7 +11,10 @@ body {
 	-webkit-border-radius: 5px;
 	background: #fff;
 }
-#results li {
+.pane fielset ul {
+	-webkit-border-radius: none;
+}
+.pane ul li {
 	padding: 10px 2px 0 5px;
 	border-bottom: 1px solid #909090;
 	position: relative;
@@ -21,7 +24,7 @@ body {
 	font-weight: 700;
 	color: #646464;
 }
-#results li div.button {
+.pane li div.button {
 	position: absolute;
 	top: 2px;
 	right: 4px;
@@ -48,7 +51,32 @@ label {
 	font-size: 20px;
 	width: 100%;
 }
-#loader {
+.title {
+	text-align: center;
+}
+.loader {
 	text-align: center;
 	padding-right: 5px !important;
+	height: 30px;
+	position: relative;
+	color: #272727;
+	margin-left: 4px;
+}
+.loader .info {
+	height: 30px;
+	position: absolute;
+	bottom: 0;
+	left: center;
+	width: 100%;
+	border: 1px solid #3472F5;
+}
+.loader .bar {
+	position: absolute;
+	bottom: 2px;
+	height: 28px;
+	margin-left: 2px;
+	margin-right: 2px;
+	background: #E0DEF2;
+	z-index: 0;
+	white-space: nowrap;
 }

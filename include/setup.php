@@ -14,4 +14,4 @@ require INCLUDE_DIR . DS . 'model.php';
 require INCLUDE_DIR . DS . 'view.php';
 require INCLUDE_DIR . DS . 'controller.php';
 
-#require 'FirePHPCore/fb.php';
+require 'FirePHPCore/fb.php';

@@ -1,5 +1,7 @@
 <?php
 
+require ROOT_DIR . DS . 'vendors' . DS . 'xmlrpc.php';
+
 /**
 * Searches Newzbin
 */		
@@ -22,7 +24,7 @@ class Newz
 	
 	public function queue ($host, $port, $user, $passwd, $action, $id) {
 
-		require ROOT_DIR . DS . 'vendors' . DS . 'xmlrpc.php';
+		
 		 if ($id <> '')
 		 	$f=new xmlrpcmsg($action, array(new xmlrpcval($id, "string")));
 		 else
@@ -31,6 +33,7 @@ class Newz
 			$c->setCredentials($user,$passwd);
 			$c->setDebug(0);
 			$r=$c->send($f);
+			
 			if(!$r->faultCode()) {
 				//Got a valid result, decode into php variables
 			#	$this->log(var_export(php_xmlrpc_decode($r->value()), true));
@@ -44,5 +47,27 @@ class Newz
 			#	$this->log("Reason: " . $r->faultString());
 				return array('code' => $r->faultCode(), 'reason' => $r->faultString());
 	         }
+	}
+	
+	public function update()
+	{
+		global $config;
+		$host = $config['host'];
+		$port = $config['port'];
+		$user = $config['user'];
+		$passwd = $config['passwd'];
+		
+		$f=new xmlrpcmsg("status","");
+	    	 //echo "<PRE>Sending the following request:<BR>" . htmlentities($f->serialize()) . "</PRE>\n";
+	         $c=new xmlrpc_client("", $host, $port);
+	         $c->setCredentials($user,$passwd);
+	         $c->setDebug(0);
+	         $r=$c->send($f);
+	         if(!$r->faultCode())
+	         	//Got a valid result, decode into php variables
+	                return php_xmlrpc_decode($r->value());
+	         else {
+				return array('code' => $r->faultCode(), 'reason' => $r->faultString());
+		}
 	}
 }

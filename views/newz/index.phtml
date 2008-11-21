@@ -9,20 +9,31 @@
 	<body>
 		<div id="container">
 			<div id="header">
+				<ul id="nav">
+					<li><a href="#search">search</a></li>
+					<li><a href="#monitor">monitor</a></li>
+				</ul>
 			</div>
 			<div id="contents">
-				<form id="newz_search_form">
-					<div class="form_element">
-						<label for="keyword">Keyword</label>
-						<input type="text" name="keyword" id="keyword"/>
-					</div>
-					<div class="submit">
-						<input type="submit" name="submit" value="search"/>
-					</div>
-				</form>
-				<ul id="results"></ul>
-				<?= $content_for_layout ?>
-				<? if($results){var_dump($results);}?>
+				<div id="search" class="pane">
+					<form id="newz_search_form">
+						<div class="form_element">
+							<label for="keyword">Keyword</label>
+							<input type="text" name="keyword" id="keyword"/>
+						</div>
+						<div class="submit">
+							<input type="submit" name="submit" value="search"/>
+						</div>
+					</form>
+					<ul id="results"></ul>
+				</div>
+				
+				<div id="monitor" class="pane" style="display: none">
+					<h3 class="title">Monitor</h3>
+					<fieldset>
+						monitor here
+					</fieldset>
+				</div>
 			</div>
 			<div id="footer"></div>
 		</div>
