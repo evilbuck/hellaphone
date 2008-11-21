@@ -1,6 +1,31 @@
 body {
 	background: url(../images/pinstripes.png) #EFEFEF;
 	font-family: Arial;
+	padding:0;
+	margin:0;
+}
+#container {
+	padding: 0;
+}
+#content {
+	padding: 4px;
+}
+#nav {
+	height: 35px;
+	background: url(../images/header-bg.png) repeat-x;
+	list-style: none;
+	font-size: 25px;
+	font-weight: 600;
+	margin-top: 0;
+}
+#nav li {
+	display: inline;
+}
+#nav li a {
+	padding-left: 8px;
+	padding-right: 8px;
+	color: #272727;
+	text-decoration: none;
 }
 .pane ul, .pane fieldset {
 	border: 1px solid #999;
@@ -54,9 +79,13 @@ label {
 .title {
 	text-align: center;
 }
-.loader {
+#loader {
 	text-align: center;
 	padding-right: 5px !important;
+}
+.loader {
+	text-align: center;
+	
 	height: 30px;
 	position: relative;
 	color: #272727;
