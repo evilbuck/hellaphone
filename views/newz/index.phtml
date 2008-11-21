@@ -1,0 +1,32 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN"
+	"http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
+<html>
+	<head>
+		<title></title>
+		<link rel="stylesheet" href="css/application.css" type="text/css" media="screen" title="no title" charset="utf-8">
+		<meta name="viewport" content="initial-scale=1, user-scalable=no" />
+	</head>
+	<body>
+		<div id="container">
+			<div id="header">
+			</div>
+			<div id="contents">
+				<form id="newz_search_form">
+					<div class="form_element">
+						<label for="keyword">Keyword</label>
+						<input type="text" name="keyword" id="keyword"/>
+					</div>
+					<div class="submit">
+						<input type="submit" name="submit" value="search"/>
+					</div>
+				</form>
+				<ul id="results"></ul>
+				<?= $content_for_layout ?>
+				<? if($results){var_dump($results);}?>
+			</div>
+			<div id="footer"></div>
+		</div>
+		<script type="text/javascript" src="js/jquery.js"></script>
+		<script type="text/javascript" src="js/application.js"></script>
+	</body>
+</html>

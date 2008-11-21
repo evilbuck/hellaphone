@@ -1,0 +1,54 @@
+body {
+	background: url(../images/pinstripes.png) #EFEFEF;
+}
+#results {
+	margin: 2px;
+	border: 1px solid #999;
+	list-style: none;
+	list-style-position: inside;
+	padding-left: 0;
+	min-height: 40px;
+	-webkit-border-radius: 5px;
+	background: #fff;
+}
+#results li {
+	padding: 10px 2px 0 5px;
+	border-bottom: 1px solid #909090;
+	position: relative;
+	min-height: 40px;
+	padding-right: 104px;
+	font-family: "Arial";
+	font-weight: 700;
+	color: #646464;
+}
+#results li div.button {
+	position: absolute;
+	top: 2px;
+	right: 4px;
+	width: 81px;
+	height: 28px;
+	padding-top: 8px;
+	-webkit-border-image: url(../images/whiteButton.png) 0 12 0 12;
+/*	background: url(../images/download.png) 0 0 no-repeat; */
+	text-align: center;
+	cursor: pointer;
+	color: #fff;
+	text-shadow: #000000 2px 2px 3px 3px;
+}
+
+div.form_element {
+	margin-left: 4px;
+	margin-right: 8px;
+}
+label {
+	font-family: Arial;
+	font-weight: 600;
+}
+#keyword {
+	font-size: 20px;
+	width: 100%;
+}
+#loader {
+	text-align: center;
+	padding-right: 5px !important;
+}
