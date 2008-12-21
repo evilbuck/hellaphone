@@ -25,11 +25,18 @@ function handleSearch(data) {
 	for(var x in data) {
 		li += '<li><div class="name"> ' + data[x].title + '</div>';
 		li += '<div class="button" id="report_' + data[x].report_id + '">';
-		li += 'download</div></li>';
+		li += 'download</div>';
+		li += data[x].description;
+		li += '</li>';
 	}
 	$("#results").append(li);
 	$("#loader").remove();
 	$("#results li div.button").click(download);
+	$('#results li').click(showDescription);
+}
+
+function showDescription() {
+	$(this).children('ul').slideToggle();
 }
 
 function download() {

@@ -8,7 +8,8 @@ class Newz_Controller extends Controller {
 			foreach($results as $r) {
 				$slimmed[] = array(
 					'title' => $r['title'],
-					'report_id' => $r['report:id']
+					'report_id' => $r['report:id'],
+					'description' => strip_tags($r['description'], '<ul><li>')
 				);
 			}
 			$this->View->data = $slimmed;

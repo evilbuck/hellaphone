@@ -109,3 +109,16 @@ label {
 	z-index: 0;
 	white-space: nowrap;
 }
+
+.pane ul#results li ul {
+	border: none;
+	display: none;
+}
+.pane ul#results li ul li {
+	border: none;
+	padding-top: 2px;
+	padding-bottom: 2px;
+	min-height: 15px;
+	font-weight: normal;
+	color: #5DA7F6;
+}
