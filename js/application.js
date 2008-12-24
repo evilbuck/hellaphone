@@ -9,11 +9,13 @@ function initSearch () {
 
 function search() {
 	$("#results").prepend('<li id="loader"><img src="images/ajax-loader.gif"/></li>');
+	var data = $("#newz_search_form").serialize();
 	$.ajax({
-		url: '?c=newz&a=index&keyword='+ $("#keyword").val(),
+		url: '?c=newz&a=index',//'&q='+ $("#q").val(),
 		success: handleSearch,
-		dataType: 'json'
-		
+		dataType: 'json',
+		data: data,
+		method: 'POST'
 	});
 	
 	return false;

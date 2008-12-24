@@ -7,10 +7,23 @@ require ROOT_DIR . DS . 'vendors' . DS . 'xmlrpc.php';
 */		
 class Newz
 {
-	public function search($keyword) {
+	public function find($params=array()) {
 		require ROOT_DIR . DS . 'vendors' . DS . 'rss_php.php';
-		$uri = 'http://v3.newzbin.com/search/query/?area=-1&fpn=p&searchaction=Go&areadone=-1&feed=rss&q=' 
-			. urlencode($keyword);
+		$uri = 'http://v3.newzbin.com/search/query/?fpn=p&searchaction=Go&feed=rss';
+		
+		$params['area'] = (!isset($params['area'])) ? '-1' : $params['area'];
+		$params['areadone'] = $params['area'];
+		$params['category'] = str_ireplace('c.', '', $params['area']);
+		
+		foreach($params as $key=>$val) {
+			if(!empty($val))
+				$uri_params[] = "{$key}=". urlencode($val);
+		}
+		
+		if(!empty($uri_params)) {
+			$uri .= "&" . implode('&', $uri_params);
+		}
+#die($uri);
 		try {
 			$rss_php = new rss_php;
 			$rss_php->load($uri);

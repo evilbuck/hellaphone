@@ -14,12 +14,33 @@
 					<li><a href="#monitor">monitor</a></li>
 				</ul>
 			</div>
+			
 			<div id="contents">
 				<div id="search" class="pane">
 					<form id="newz_search_form">
 						<div class="form_element">
-							<label for="keyword">Keyword</label>
-							<input type="text" name="keyword" id="keyword"/>
+							<label for="q">Keyword</label>
+							<input type="text" name="Newz[q]" id="q"/>
+						</div>
+						
+						<div class="form_element">
+							<label for="Newz-area">Category</label>
+							<select name="Newz[area]" id="Newz-area">
+								<option label="Unknown" value="c.0">Unknown</option>
+								<option label="Anime" value="c.11">Anime</option>
+								<option label="Apps" value="c.1">Apps</option>
+								<option label="Books" value="c.13">Books</option>
+								<option label="Consoles" value="c.2">Consoles</option>
+								<option label="Discussions" value="c.15">Discussions</option>
+								<option label="Emulation" value="c.10">Emulation</option>
+								<option label="Games" value="c.4">Games</option>
+								<option label="Misc" value="c.5">Misc</option>
+								<option label="Movies" value="c.6">Movies</option>
+								<option label="Music" value="c.7">Music</option>
+								<option label="PDA" value="c.12">PDA</option>
+								<option label="Resources" value="c.14">Resources</option>
+								<option label="TV" value="c.8">TV</option>
+							</select>
 						</div>
 						<div class="submit">
 							<input type="submit" name="submit" value="search"/>
@@ -34,6 +55,7 @@
 						monitor here
 					</fieldset>
 				</div>
+				
 			</div>
 			<div id="footer"></div>
 		</div>

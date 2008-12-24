@@ -2,8 +2,10 @@
 class Newz_Controller extends Controller {
 	public function index()
 	{
-		if(!empty($this->params['keyword'])) {
-			$results = $this->View->results = $this->Newz->search($this->params['keyword']);
+		if(!empty($this->params['Newz'])) {
+			
+			$options = $this->params['Newz'];
+			$results = $this->View->results = $this->Newz->find($options);
 			$slimmed = array();
 			foreach($results as $r) {
 				$slimmed[] = array(
