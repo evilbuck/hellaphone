@@ -1,0 +1,48 @@
+!!! 1.1
+  %html
+    %head
+      %script{ :src => 'js/jquery.js', :type => 'text/javascript' }
+      %script{ :src => 'js/application.js', :type => 'text/javascript' }
+      %link{ :href => 'css/base.css', :type => 'text/css', :rel => 'stylesheet' }
+      %link{ :href => 'css/application.css', :type => 'text/css', :rel => 'stylesheet' }
+      = '<meta name="viewport" content="initial-scale=1, user-scalable=no" />'
+    %body
+      #container
+        #header
+          %ul#nav
+            %li
+              %a{ :href => '#search' } search
+            %li
+              %a{ :href => '#monitor' } monitor
+        #contents
+          #search.pane
+            %form#newz_search_pane
+              .form_element
+                %label{ :for => 'q' } Keyword
+                %input#q{ :type => 'text', :name => 'Newz[q]'}
+         
+              .form_element
+                %label{ :for => 'Newz-area' } Category
+                %select#Newz-area{ :name => 'Newz[area]'}
+                  %option{ :value => '', :label => 'All'} All
+                  %option{ :label => 'Anime', :value => 'c.11' } Anime
+                  %option{ :label => 'Apps', :value => 'c.1' } Apps
+                  %option{ :label => 'Books', :value => 'c.13' } Books
+                  %option{ :label => 'Consoles', :value => 'c.2' } Consoles
+                  %option{ :label => 'Discussions', :value => 'c.15' } Discussions
+                  %option{ :label => 'Emulation', :value => 'c.10' } Emulation
+                  %option{ :label => 'Games', :value => 'c.4' } Games
+                  %option{ :label => 'Misc', :value => 'c.5' } Misc
+                  %option{ :label => 'Movies', :value => 'c.6' } Movies
+                  %option{ :label => 'Music', :value => 'c.7' } Music
+                  %option{ :label => 'PDA', :value => 'c.12' } PDA
+                  %option{ :label => 'Resources', :value => 'c.14' } Resources
+                  %option{ :label => 'TV', :value => 'c.8' } TV
+         
+              .submit
+                %input{ :type => 'submit', :value => 'search', :name => 'submit' }
+            %ul#results
+          #monitor.pane{ :style => 'display:none' }
+            %h3.title Monitor
+            %fieldset
+        #footer

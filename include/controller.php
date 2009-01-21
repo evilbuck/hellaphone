@@ -39,8 +39,15 @@ class Controller {
 	public function __destruct() {
 		$file = Inflector::underscore($this->controller) 
 			. DS . Inflector::underscore($this->action);
-		if($this->View->autoRender())
-			$this->View->render($file . '.phtml');
+		if($this->View->autoRender()) {
+			try {
+				$this->View->render($file . '.haml');
+			} catch(Exception $e) {
+				$this->View->render($file . '.phtml');
+			}
+			
+		}
+			
 	}
 	
 	private function runAction($action, $id=null)
