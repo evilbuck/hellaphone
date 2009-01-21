@@ -4,12 +4,12 @@ $(document).ready(function(){
 });
 
 function initSearch () {
-	$("#newz_search_form").submit(search);
+	$("#newz_search_pane").submit(search);
 }
 
 function search() {
 	$("#results").prepend('<li id="loader"><img src="images/ajax-loader.gif"/></li>');
-	var data = $("#newz_search_form").serialize();
+	var data = $("#newz_search_pane").serialize();
 	$.ajax({
 		url: '?c=newz&a=index',//'&q='+ $("#q").val(),
 		success: handleSearch,
@@ -31,7 +31,7 @@ function handleSearch(data) {
 		li += data[x].description;
 		li += '</li>';
 	}
-	$("#results").append(li);
+	$("#results").html(li);
 	$("#loader").remove();
 	$("#results li div.button").click(download);
 	$('#results li').click(showDescription);
