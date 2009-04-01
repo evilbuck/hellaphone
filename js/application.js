@@ -25,9 +25,10 @@ function search() {
 function handleSearch(data) {
 	var li = '';
 	for(var x in data) {
-		li += '<li><div class="name"> ' + data[x].title + '</div>';
-		li += '<div class="button" id="report_' + data[x].report_id + '">';
-		li += 'download</div>';
+		li += '<li>';
+		li += '<a class="button" id="report_' + data[x].report_id + '">';
+		li += 'download</a>';
+		li += '<div class="name"> ' + data[x].title + '</div>';
 		li += data[x].description;
 		li += '</li>';
 	}

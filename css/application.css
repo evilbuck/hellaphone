@@ -44,11 +44,27 @@ body {
 	border-bottom: 1px solid #909090;
 	position: relative;
 	min-height: 40px;
-	padding-right: 104px;
 	font-family: "Arial";
 	font-weight: 700;
 	color: #646464;
 }
+
+.button {
+	float: right;
+	background: url(../images/button.gif) repeat-x 0 0;
+	display: block;
+	width: 81px;
+	height: 24px;
+	border: 1px solid #ABABAB;
+	-webkit-border-radius: 4px;
+	padding-top: 8px;
+	margin: 0 9px 0 3px;
+	text-align: center;
+	color: #fff;
+	cursor: pointer;
+	text-shadow: #000000 2px 2px 3px 3px;
+}
+/*
 .pane li div.button {
 	position: absolute;
 	top: 2px;
@@ -57,11 +73,15 @@ body {
 	height: 28px;
 	padding-top: 8px;
 	-webkit-border-image: url(../images/whiteButton.png) 0 12 0 12;
-/*	background: url(../images/download.png) 0 0 no-repeat; */
 	text-align: center;
 	cursor: pointer;
 	color: #fff;
 	text-shadow: #000000 2px 2px 3px 3px;
+}
+*/
+
+.button {
+	
 }
 
 div.form_element {
@@ -111,6 +131,7 @@ label {
 }
 
 .pane ul#results li ul {
+	clear: both;
 	border: none;
 	display: none;
 }
