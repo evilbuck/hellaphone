@@ -34,7 +34,7 @@ function handleSearch(data) {
 	}
 	$("#results").html(li);
 	$("#loader").remove();
-	$("#results li div.button").click(download);
+	$("#results li > a").click(download);
 	$('#results li').click(showDescription);
 }
 
@@ -51,6 +51,8 @@ function download() {
 		dataType: 'json',
 		success: handleDownload
 	});
+	
+	return false;
 }
 
 function handleDownload(data) {
@@ -104,19 +106,27 @@ function update(data) {
 		var html = '<div>Code: '+data.code+'</div>';
 		html += '<div>'+data.reason+'</div>';
 	} else {
-		// build status report	
-		var html = '<fieldset><div class="title">Currently downloading: ' + data.currently_downloading[0].nzbName + '</div>';
-		html += '<div class="loader">';
-		html += '<div class="info">'+ data.percent_complete + '% complete</div>';
-		html += '<div class="bar" style="width: ' + data.percent_complete + '%"></div></div></fieldset>';
+		// build status report
+		var html = '';
+		if(data.currently_downloading[0]) {
+    		html += '<fieldset>';
+    		html += '<div class="title">Currently downloading: ' + data.currently_downloading[0].nzbName + '</div>';
+    		html += '<div class="loader">';
+    		html += '<div class="info">'+ data.percent_complete + '% complete</div>';
+    		html += '<div class="bar" style="width: ' + data.percent_complete + '%"></div></div></fieldset>';
+    	}
 		html += '<h4 class="title">Queued Reports</h4>';
-		
-		html += '<ul id="queue">';
-		for(var x in data.queued) {
-			var report = data.queued[x];
-			html += '<li>'+report['nzbName']+'<span>'+report['total_mb']+'MB</span></li>';
+		if(data.queued.length > 0) {
+		    html += '<ul id="queue">';
+    		for(var x in data.queued) {
+    			var report = data.queued[x];
+    			html += '<li>'+report['nzbName']+'<span>'+report['total_mb']+'MB</span></li>';
+    		}
+    		html += '</ul>';
+		} else {
+		    html += '<fieldset><p>There are not any reports currently in the queue.</p></fieldset>';
 		}
-		html += '</ul>';
+		
 	}
 	$("#monitor").html($(html));
 }

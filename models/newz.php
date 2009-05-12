@@ -23,7 +23,7 @@ class Newz
 		if(!empty($uri_params)) {
 			$uri .= "&" . implode('&', $uri_params);
 		}
-#die($uri);
+
 		try {
 			$rss_php = new rss_php;
 			$rss_php->load($uri);

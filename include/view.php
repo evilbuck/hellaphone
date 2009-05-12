@@ -12,7 +12,7 @@ class View {
 	public function render($file)
 	{
 		$this->setAutoRender();
-		if($this->vars)	extract($this->vars);
+		if(isset($this->vars))	extract($this->vars);
 		if(preg_match('/^.*\.haml$/', $file, $matches) > 0) {
 			$this->Haml->display(VIEW_DIR . DS . $file);
 		} else {

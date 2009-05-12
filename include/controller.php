@@ -24,7 +24,9 @@ class Controller {
 		$this->initModel();
 		
 		$this->action = (!empty($this->params['a'])) ? $this->params['a'] : 'index';
-		$this->runAction($this->action, $this->params['id']);
+		
+		$id = isset($this->params['id']) ? $this->params['id'] : null;
+		$this->runAction($this->action, $id);
 		
 	}
 	
